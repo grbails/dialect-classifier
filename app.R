@@ -26,7 +26,7 @@ ui <- fluidPage(
       titlePanel(windowTitle = "DIALECT-O-TRON",
                  img(src = "dialectotron_logo.png", width = "35%")),
       
-      p('Developed by George Bailey, University of York'),
+      HTML('<p>Developed by <a href="https://www.gbailey.uk/" target="_blank">George Bailey</a>, University of York</p>'),
       
       sidebarLayout(
         
@@ -324,7 +324,7 @@ server <- function(input, output, session) {
       pred_probs %>%
         ggplot(aes(location, probs, fill = location)) +
         geom_col(stat = 'identity', colour = 'black') +
-        geom_label(aes(label = paste0(round(probs, 2)*100, "%")), vjust = -0.5) +
+        geom_label(aes(label = paste0(round(probs, 2)*100, "%")), vjust = -0.5, size = 8) +
         scale_x_discrete("Location") +
         scale_y_continuous("Probability", limits = c(0, 1)) +
         scale_fill_manual(values = c('#ffffb3', '#fb8072', '#bebada', '#80b1d3', '#8dd3c7'),
